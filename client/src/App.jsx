@@ -1,23 +1,18 @@
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Notfound from "./pages/Notfound";
-
+import MessageBoard from "./pages/messageBoard";
+import NewMessageForm from "./Components/newMessageForm";
+import Login from "./pages/login";
 export default function App() {
   return (
     <>
-      <div className="App">
-        <h1>Welcome to my website</h1>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-      </div>
+      <Link to="/signup"> Sign Up</Link>
+      <h1>Login to Message Board</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<Notfound />} />
+        <Route path="/" element={<Login />}>
+          <Route path="/messages/:username" element={<MessageBoard />}></Route>
+          <Route path="/newmessage" element={<NewMessageForm />} />
+        </Route>
       </Routes>
     </>
   );

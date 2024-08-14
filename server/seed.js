@@ -11,13 +11,16 @@ db.query(`CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(15) NOT NULL
     )
     
-    
+    INSERT INTO users(name, password) VALUES('Admin', 'PassWord123!')
     
     CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) NOT NULL,
+    colour VARCHAR(12)
     )
     
+    INSERT INTO categories(name, colour)VALUES('Codeing', '#dba554')
+
     CREATE TABLE IF NOT EXISTS messages (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
@@ -27,12 +30,6 @@ db.query(`CREATE TABLE IF NOT EXISTS users (
     category_id INTEGER REFERENCES categories(id)
     )
     
-    CREATE TABLE IF NOT EXISTS message_categories (
-    message_id INTEGER REFERENCES messages(id),
-    category_id INTEGER REFERENCES categories(id)
-    )
+    INSERT INTO messages (user_id, message, likes, timestamp, category_id) VALUES('1', 'test', 1,'now()','1')
     
-    CREATE TABLE IF NOT EXISTS user_messages (
-    user_id INTEGER REFERENCES users(id),
-    message_id INTEGER REFERENCES messages(id)
-    )`);
+    `);
