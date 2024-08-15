@@ -16,11 +16,9 @@ export default function Login() {
   function handleChange(event) {
     setLoginForm({ ...loginForm, [event.target.name]: event.target.value });
   }
-
+  //user entry validation
   const userValidation = async (event) => {
     event.preventDefault();
-    console.log("form submited");
-    console.log(loginForm);
     const response = await fetch("http://localhost:8080/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,9 +57,11 @@ export default function Login() {
           value={loginForm.name}
           onChange={handleChange}
           placeholder="Enter Username"
+          required
         />
         <label className="passwordLabel" htmlFor="password">
-          Password
+          Your password must contain at least one number and one uppercase and
+          lowercase letter, and at between 8 & 15 characters.
         </label>
         <input
           className="passwordBox"
@@ -71,6 +71,8 @@ export default function Login() {
           value={loginForm.password}
           onChange={handleChange}
           placeholder="Enter Password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}"
+          required
         />
         <button type="Submit">Login</button>
       </form>

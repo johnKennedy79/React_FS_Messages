@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 export default function NewMessageForm() {
   const [category, setCategory] = useState([]);
   const [user, setUser] = useState([null]);
@@ -22,6 +23,7 @@ export default function NewMessageForm() {
     const categoryData = await catRes.json();
     setCategory(categoryData);
   }
+
   //get userdata
   async function getUser() {
     try {
@@ -35,12 +37,14 @@ export default function NewMessageForm() {
       console.error(error);
     }
   }
+
   //handle change of form
   function handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     setForm({ ...form, [name]: value });
   }
+
   //handle submit of form
   async function handleSubmit(event) {
     try {
@@ -59,7 +63,6 @@ export default function NewMessageForm() {
         message: "",
         category: "",
       });
-      console.log("data submited");
     } catch (error) {
       console.log(error);
     }
@@ -75,6 +78,7 @@ export default function NewMessageForm() {
           id="message"
           onChange={handleChange}
           value={form.message}
+          placeholder="Enter your new message here..."
         ></textarea>
         <select
           className="postCats"
