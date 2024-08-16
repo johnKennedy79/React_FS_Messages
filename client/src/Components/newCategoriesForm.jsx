@@ -23,22 +23,20 @@ export default function NewCategories() {
   }
 
   async function handleSubmit(event) {
-    try {
-      event.preventDefault();
-      const result = await fetch("http://localhost:8080/categories", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(catForm),
-      });
-      if (!result.ok) {
-        throw new Error("message:its broken ");
-      }
+    event.preventDefault();
+    const result = await fetch("http://localhost:8080/categories", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(catForm),
+    });
+    if (result.ok) {
+      location.reload();
       setCatForm({
         name: "",
         colour: "",
       });
-    } catch (error) {
-      console.log(error);
+    } else {
+      console.error("Request Failed");
     }
   }
   return (

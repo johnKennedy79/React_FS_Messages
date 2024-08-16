@@ -16,7 +16,7 @@ db.query(`CREATE TABLE IF NOT EXISTS users (
     CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    colour VARCHAR(12)
+    colour VARCHAR(25)
     )
     
     INSERT INTO categories(name, colour)VALUES('Codeing', '#dba554')
@@ -26,10 +26,10 @@ db.query(`CREATE TABLE IF NOT EXISTS users (
     user_id INTEGER REFERENCES users(id),
     message TEXT NOT NULL,
     likes INT,
-    timestamp timestamp default now() NOT NULL,
+    timestamp timestamp default now(),
     category_id INTEGER REFERENCES categories(id)
     )
     
-    INSERT INTO messages (user_id, message, likes, timestamp, category_id) VALUES('1', 'test', 1,'now()','1')
+    INSERT INTO messages (user_id, message, likes, timestamp, category_id) VALUES('1', 'I Love Codeing it is challanging and rewarding', 1,'now()','1')
     
     `);

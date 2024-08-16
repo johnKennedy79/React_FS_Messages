@@ -43,6 +43,31 @@ app.get("/users/:username", async (req, res) => {
   }
 });
 
+//get all messages where category is
+app.get("/messagesByCategory/:categoryID", async (req, res) => {
+  const { categoryID } = req.params;
+  console.log(categoryID);
+  try {
+    const result = await db.query(
+      `SELECT messages.id, messages.message, messages.likes, messages.timestamp, users.name AS user, categories.name AS category, categories.colour AS colour 
+      FROM messages 
+      JOIN users ON messages.user_id = users.id
+      JOIN categories ON messages.category_id = categories.id
+      WHERE category_id = $1
+      ORDER BY messages.timestamp DESC`,
+      [categoryID]
+    );
+    if (res.status(200).json) {
+      res.json(result.rows);
+    } else {
+      res.status(400).json({ message: "No messages found in this category" });
+    }
+  } catch (error) {
+    console.error("Error fetching data", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 //post request to add a new message
 app.post("/messages", async function (req, res) {
   const name = req.body.name;

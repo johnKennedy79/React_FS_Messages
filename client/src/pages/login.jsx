@@ -9,7 +9,6 @@ export default function Login() {
   });
   useEffect(() => {
     userValidation();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,9 +41,11 @@ export default function Login() {
     });
   };
   return (
-    <div>
-      <Link to="/signup"> Sign Up</Link>
-      <h1>Login to Message Board</h1>
+    <div className="logindiv">
+      <nav className="loginNav">
+        <Link to="/signup"> Sign Up</Link>
+      </nav>
+      <h1 className="loginHead">Login to Message Board</h1>
       <form className="loginForm" onSubmit={userValidation}>
         <label className="usernamelabel" htmlFor="username">
           Username
@@ -74,7 +75,9 @@ export default function Login() {
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}"
           required
         />
-        <button type="Submit">Login</button>
+        <button className="loginBtn" type="Submit">
+          Login
+        </button>
       </form>
       {validationError && <p className="vError">{validationError}</p>}
     </div>

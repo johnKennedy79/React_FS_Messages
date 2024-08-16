@@ -37,10 +37,12 @@ export default function SignUp() {
     });
   }
   return (
-    <div>
-      <Link to="/">Login</Link>
-      <h1>Create a New Account</h1>
-      <form className="loginForm" onSubmit={handleSubmit}>
+    <div className="logindiv">
+      <div className="loginNav">
+        <Link to="/">Login</Link>
+      </div>
+      <h1 className="loginHead">Create a New Account</h1>
+      <form className="signupForm" onSubmit={handleSubmit}>
         <label className="usernamelabel" htmlFor="username">
           Username
         </label>
@@ -69,7 +71,9 @@ export default function SignUp() {
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}"
           required
         />
-        <button type="Submit">Create A New Account</button>
+        <button className="signupBtn" type="Submit">
+          Create A New Account
+        </button>
       </form>
     </div>
   );

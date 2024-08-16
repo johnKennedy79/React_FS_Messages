@@ -1,0 +1,165 @@
+.mbPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mbNav {
+  position: fixed;
+  display: flex;
+  width: 90vw;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0.3rem;
+  background-color: #002349;
+  border-top: #cd950c groove 10px;
+  border-bottom: #cd950c groove 10px;
+  border-radius: 20px;
+  padding-top: 1rem;
+  z-index: 100;
+}
+.mbNav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #cd950c;
+}
+.mbNav a:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: #8b6508;
+  cursor: pointer;
+}
+.mbdiv {
+  margin-top: 8rem;
+  width: 80vw;
+}
+.mbHeadCont {
+  width: 80vw;
+}
+.mbHead {
+  text-align: center;
+}
+.messageBox {
+  border: #f8f2bf solid 1px;
+  color: #002349;
+  margin-bottom: 1rem;
+}
+.messageBoxHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.user {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  margin-left: 1rem;
+}
+.category {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  margin-right: 1rem;
+}
+.messageTextBox {
+  opacity: 0.9;
+  padding: 1rem;
+  background-color: #f8f2bf;
+}
+.message {
+  color: #002349;
+  opacity: 1;
+  margin: 0;
+}
+.messageBoxFooter {
+  display: flex;
+  justify-content: space-between;
+}
+.thumbContainer {
+  display: flex;
+  width: 4rem;
+  justify-content: space-around;
+}
+
+.thumb {
+  width: 1.5rem;
+  margin-bottom: 0rem;
+}
+.likes {
+  margin-bottom: 0.3rem;
+  margin-left: 0.3rem;
+  color: #e325c9;
+}
+.thumbContainer:hover {
+  background-color: #f8f2bf;
+  opacity: 0.7;
+}
+.timeStamp {
+  padding-top: 0.8rem;
+  margin-bottom: 0;
+  margin-right: 1rem;
+  font-size: 0.4rem;
+  text-align: center;
+}
+.postMessageBox {
+  position: fixed;
+  background-color: #e8e5c3;
+  border: #8b6508 solid 2px;
+  display: flex;
+  flex-direction: column;
+  height: 67vh;
+  width: 80vw;
+  align-items: center;
+  z-index: 50;
+}
+.postTitle {
+  background-color: #002349;
+  width: 75vw;
+  text-align: center;
+  padding-top: 0.5rem;
+  margin-top: 0.3rem;
+  padding-bottom: 0.5rem;
+}
+.postMessageForm {
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  height: 55vh;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 50;
+}
+
+.postText {
+  font-family: "Peralta", serif;
+  color: #002349;
+  width: 70vw;
+  height: 35vh;
+  overflow-y: scroll;
+  border: #8b6508 solid 2px;
+}
+
+.postCats {
+  background-color: #f8f2bf;
+  color: #002349;
+  border: #8b6508 solid 2px;
+  border-radius: 20px;
+  margin-top: 1rem;
+  width: 10rem;
+  height: 2rem;
+  padding-left: 0.5rem;
+  font-family: "Peralta", serif;
+  font-weight: 600;
+}
+.sendPost {
+  margin: 1rem;
+  font-family: "Peralta", serif;
+  font-weight: 600;
+  background-color: #f8f2bf;
+  color: #002349;
+  border: #8b6508 solid 2px;
+  border-radius: 20px;
+  width: 5rem;
+  height: 2rem;
+  margin-top: 2rem;
+}
+.sendPost:hover {
+  background-color: #e8e5c3;
+  cursor: pointer;
+}

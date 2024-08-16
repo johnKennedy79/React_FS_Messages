@@ -47,30 +47,28 @@ export default function NewMessageForm() {
 
   //handle submit of form
   async function handleSubmit(event) {
-    try {
-      event.preventDefault();
-      const submissionData = { ...form, name: user ? user.id : "" };
-      const result = await fetch("http://localhost:8080/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionData),
-      });
-      if (!result.ok) {
-        throw new Error("message:its broken ");
-      }
+    event.preventDefault();
+    const submissionData = { ...form, name: user ? user.id : "" };
+    const result = await fetch("http://localhost:8080/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(submissionData),
+    });
+    if (result.ok) {
+      location.reload();
       setForm({
         name: "",
         message: "",
         category: "",
       });
-    } catch (error) {
-      console.log(error);
+    } else {
+      console.error("Failed to post new message.");
     }
   }
 
   return (
     <div className="postMessageBox">
-      <h2>Leave a message</h2>
+      <h2 className="postTitle">Leave a message</h2>
       <form onSubmit={handleSubmit} className="postMessageForm">
         <textarea
           className="postText"
