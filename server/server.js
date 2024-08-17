@@ -46,7 +46,6 @@ app.get("/users/:username", async (req, res) => {
 //get all messages where category is
 app.get("/messagesByCategory/:categoryID", async (req, res) => {
   const { categoryID } = req.params;
-  console.log(categoryID);
   try {
     const result = await db.query(
       `SELECT messages.id, messages.message, messages.likes, messages.timestamp, users.name AS user, categories.name AS category, categories.colour AS colour 
@@ -134,7 +133,6 @@ app.post("/login", async function (req, res) {
       name,
     ]);
     const user = result.rows[0];
-    console.log(user);
     if (user && user.password === password) {
       return res.status(200).json({ message: "Login successful" });
     } else {

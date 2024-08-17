@@ -1,6 +1,7 @@
 .loginNav {
   position: fixed;
-  right: 1rem;
+  top: 8rem;
+  right: 4rem;
   padding: 0.5rem;
 }
 .loginNav a {
@@ -20,6 +21,8 @@
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
+  position: fixed;
+  background-color: #002349;
 }
 
 .logindiv {
@@ -30,6 +33,7 @@
 }
 
 .loginForm {
+  margin-top: 10.5rem;
   display: flex;
   flex-direction: column;
   width: 60vw;
@@ -42,6 +46,7 @@
 .usernamelabel {
   padding: 0.5rem;
   text-align: center;
+  margin-top: 1rem;
 }
 .usernameBox {
   border: #8b6508 solid 2px;

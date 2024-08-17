@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function NewMessageForm() {
   const [category, setCategory] = useState([]);
   const [user, setUser] = useState([null]);
-  const { username } = useParams();
+  const { username } = useParams(user);
   const [form, setForm] = useState({
     name: "",
     message: "",
