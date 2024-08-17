@@ -17,11 +17,14 @@ export default function SignUp() {
   async function handleSubmit(event) {
     try {
       event.preventDefault();
-      const result = await fetch("http://localhost:8080/signUp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(signForm),
-      });
+      const result = await fetch(
+        "https://react-fs-messages.onrender.com/signUp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(signForm),
+        }
+      );
       if (result.ok) {
         console.log("data submited");
         navigate("/");

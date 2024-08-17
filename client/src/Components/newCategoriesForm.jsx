@@ -11,7 +11,9 @@ export default function NewCategories() {
     getCategories();
   }, []);
   async function getCategories() {
-    const catRes = await fetch("http://localhost:8080/categories");
+    const catRes = await fetch(
+      "https://react-fs-messages.onrender.com/categories"
+    );
     const categoryData = await catRes.json();
     setCategory(categoryData);
   }
@@ -24,11 +26,14 @@ export default function NewCategories() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const result = await fetch("http://localhost:8080/categories", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(catForm),
-    });
+    const result = await fetch(
+      "https://react-fs-messages.onrender.com/categories",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(catForm),
+      }
+    );
     if (result.ok) {
       location.reload();
       setCatForm({

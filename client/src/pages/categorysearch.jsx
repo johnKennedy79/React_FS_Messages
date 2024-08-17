@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import thumb from "../assets/img/thumb_up_16_pink.png";
 export default function SearchByCategory() {
   const [category, setCategory] = useState([]);
@@ -11,7 +10,9 @@ export default function SearchByCategory() {
     getCategories();
   }, []);
   async function getCategories() {
-    const catRes = await fetch("http://localhost:8080/categories");
+    const catRes = await fetch(
+      "https://react-fs-messages.onrender.com/categories"
+    );
     const categoryData = await catRes.json();
     setCategory(categoryData);
   }
@@ -27,7 +28,7 @@ export default function SearchByCategory() {
       event.preventDefault();
       console.log(form);
       const catRes = await fetch(
-        `http://localhost:8080/messagesByCategory/${form.category}`
+        `https://react-fs-messages.onrender.com/messagesByCategory/${form.category}`
       );
       if (!catRes.ok) {
         throw new Error("Failed to fetch category");

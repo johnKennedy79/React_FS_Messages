@@ -20,7 +20,9 @@ export default function App() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/users/${username}`);
+        const response = await fetch(
+          `https://react-fs-messages.onrender.com/users/${username}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch user");
         }

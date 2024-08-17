@@ -12,7 +12,9 @@ export default function MessageBoard() {
 
   async function getMessages() {
     try {
-      const response = await fetch("http://localhost:8080/messages");
+      const response = await fetch(
+        "https://react-fs-messages.onrender.com/messages"
+      );
       const data = await response.json();
       setMessages(data);
     } catch (error) {
@@ -22,7 +24,7 @@ export default function MessageBoard() {
   //send likes
   async function sendLike(messageId) {
     const reslike = await fetch(
-      `http://localhost:8080/messages/${messageId}/like`,
+      `https://react-fs-messages.onrender.com/messages/${messageId}/like`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,7 +40,7 @@ export default function MessageBoard() {
   // delete message
   async function deleteMessage(messageId) {
     const resdelete = await fetch(
-      `http://localhost:8080/messages/${messageId}`,
+      `https://react-fs-messages.onrender.com/messages/${messageId}`,
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },

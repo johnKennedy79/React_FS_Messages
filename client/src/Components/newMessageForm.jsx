@@ -19,7 +19,9 @@ export default function NewMessageForm() {
 
   //get category data
   async function getCategories() {
-    const catRes = await fetch("http://localhost:8080/categories");
+    const catRes = await fetch(
+      "https://react-fs-messages.onrender.com/categories"
+    );
     const categoryData = await catRes.json();
     setCategory(categoryData);
   }
@@ -27,7 +29,9 @@ export default function NewMessageForm() {
   //get userdata
   async function getUser() {
     try {
-      const useRes = await fetch(`http://localhost:8080/users/${username}`);
+      const useRes = await fetch(
+        `https://react-fs-messages.onrender.com/users/${username}`
+      );
       if (!useRes.ok) {
         throw new Error("Failed to fetch user");
       }
@@ -49,11 +53,14 @@ export default function NewMessageForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     const submissionData = { ...form, name: user ? user.id : "" };
-    const result = await fetch("http://localhost:8080/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(submissionData),
-    });
+    const result = await fetch(
+      "https://react-fs-messages.onrender.com/messages",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submissionData),
+      }
+    );
     if (result.ok) {
       location.reload();
       setForm({
