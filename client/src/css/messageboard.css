@@ -64,6 +64,20 @@
   padding: 1rem;
   background-color: #f8f2bf;
 }
+.delete {
+  text-decoration: none;
+  font-weight: 600;
+  color: #cd950c;
+  background-color: #e8e5c3;
+  border-radius: 20px;
+  margin-left: 80%;
+}
+.delete:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: #8b6508;
+  cursor: pointer;
+}
 .message {
   color: #002349;
   opacity: 1;

@@ -81,6 +81,22 @@ app.post("/messages", async function (req, res) {
     res.status(200).json({ message: "message success" });
   } else res.status(500).json({ message: "message failed" });
 });
+//post request to add like
+app.post(`messages/:id/like`, async function (req, res) {
+  const messageId = req.params.id;
+  const like_responce = await db.query(
+    `UPDATE messages SET (likes = likes + 1) WHERE id = `[messageId]
+  );
+  console.log(like_responce);
+});
+// post request to delete a message
+app.delete(`messages/:id`, async function (req, res) {
+  const messageId = req.params.id;
+  const responce = await db.query(
+    `DELETE * FROM messages WHERE id = `[messageId]
+  );
+  console.log(responce);
+});
 
 // fetch point for categories table
 app.get("/categories", async function (req, res) {

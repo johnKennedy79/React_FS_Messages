@@ -19,7 +19,38 @@ export default function MessageBoard() {
       console.error("Error fetching messages", error);
     }
   }
-
+  //send likes
+  async function sendLike(messageId) {
+    const reslike = await fetch(
+      `http://localhost:8080/messages/${messageId}/like`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(),
+      }
+    );
+    if (reslike.ok) {
+      location.reload();
+    } else {
+      console.error("failed to add like");
+    }
+  }
+  // delete message
+  async function deleteMessage(messageId) {
+    const resdelete = await fetch(
+      `http://localhost:8080/messages/${messageId}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(),
+      }
+    );
+    if (resdelete.ok) {
+      location.reload();
+    } else {
+      console.error("failed to DELETE");
+    }
+  }
   return (
     <div className="mbPage">
       <nav className="mbNav">
@@ -50,12 +81,21 @@ export default function MessageBoard() {
               </div>
               <div className="messageTextBox">
                 <p>{message.message}</p>
+                <button
+                  onClick={() => deleteMessage(message.id)}
+                  className="delete"
+                >
+                  delete
+                </button>
               </div>
               <div
                 className="messageBoxFooter"
                 style={{ backgroundColor: message.colour }}
               >
-                <div className="thumbContainer">
+                <div
+                  className="thumbContainer"
+                  onClick={() => sendLike(message.id)}
+                >
                   <img className="thumb" src={thumb} alt="thumbs up" />
                   <p className="likes">{message.likes}</p>
                 </div>
