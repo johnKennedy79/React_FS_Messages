@@ -40,10 +40,6 @@ export default function SearchByCategory() {
   }
   return (
     <div className="search">
-      <nav className="searchNav">
-        <Link to={"/"}>Log Out</Link>
-        <Link to={"/messageBoard/:username"}>MessageBoard</Link>
-      </nav>
       <form onSubmit={getCategory} className="MessageByCatForm">
         <select
           className="postCats"
