@@ -3,6 +3,7 @@ import "./App.css";
 import "./css/login.css";
 import "./css/signUp.css";
 import "./css/messageboard.css";
+import "./css/search.css";
 import MessageBoard from "./pages/messageBoard";
 import NewMessageForm from "./Components/newMessageForm";
 import NewCategories from "./Components/newCategoriesForm";

@@ -40,8 +40,8 @@ export default function NewCategories() {
     }
   }
   return (
-    <div>
-      <h1> Add New Catagories</h1>
+    <div className="newCatDiv">
+      <h1 className="newCatTitle"> Add New Catagories</h1>
       <form onSubmit={handleSubmit} className="newCatForm">
         <label htmlFor="newCategory" className="catNameLabel">
           {" "}
@@ -72,11 +72,13 @@ export default function NewCategories() {
       </form>
 
       <table className="catTable">
-        <tbody>
-          <th className="catTableHead">Current Categories</th>
-          <tr className="catTableTitle">
-            <td>Category Name</td>
-            <td>Category Colour</td>
+        <tbody className="catBody">
+          <tr className="THrow">
+            <th className="catTableHead">Current Categories List</th>
+          </tr>
+          <tr>
+            <td className="catTableTitle">Category Name</td>
+            <td className="catTableTitle">Category Colour</td>
           </tr>
           {category.map((category) => (
             <tr

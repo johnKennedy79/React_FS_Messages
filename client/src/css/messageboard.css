@@ -1,3 +1,4 @@
+/* main message board page  */
 .mbPage {
   display: flex;
   flex-direction: column;
@@ -5,6 +6,7 @@
 }
 .mbNav {
   position: fixed;
+  top: 4rem;
   display: flex;
   width: 90vw;
   flex-wrap: wrap;
@@ -29,7 +31,7 @@
   cursor: pointer;
 }
 .mbdiv {
-  margin-top: 8rem;
+  margin-top: 12rem;
   width: 80vw;
 }
 .mbHeadCont {
@@ -97,8 +99,9 @@
   font-size: 0.4rem;
   text-align: center;
 }
+
+/* post new message form  */
 .postMessageBox {
-  position: fixed;
   background-color: #e8e5c3;
   border: #8b6508 solid 2px;
   display: flex;
@@ -106,7 +109,8 @@
   height: 67vh;
   width: 80vw;
   align-items: center;
-  z-index: 50;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .postTitle {
   background-color: #002349;
@@ -123,7 +127,7 @@
   height: 55vh;
   align-items: center;
   justify-content: flex-end;
-  z-index: 50;
+  z-index: 10;
 }
 
 .postText {
@@ -133,6 +137,7 @@
   height: 35vh;
   overflow-y: scroll;
   border: #8b6508 solid 2px;
+  z-index: 10;
 }
 
 .postCats {
@@ -141,7 +146,7 @@
   border: #8b6508 solid 2px;
   border-radius: 20px;
   margin-top: 1rem;
-  width: 10rem;
+  width: 12rem;
   height: 2rem;
   padding-left: 0.5rem;
   font-family: "Peralta", serif;
@@ -162,4 +167,80 @@
 .sendPost:hover {
   background-color: #e8e5c3;
   cursor: pointer;
+}
+/* add new category form  */
+.newCatDiv {
+  border: #e325c9 solid 1px;
+  background-color: #e8e5c3;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.newCatTitle {
+  color: #002349;
+  text-align: center;
+}
+.newCatForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.catNameLabel {
+  color: #002349;
+}
+.catNameInput {
+  margin-top: 0.5rem;
+  font-family: "Peralta", serif;
+  color: #002349;
+  width: 13rem;
+}
+.catColorLabel {
+  color: #002349;
+  margin-top: 0.5rem;
+}
+.catColorInput {
+  margin-top: 0.5rem;
+  border: #8b6508 solid 2px;
+  border-radius: 20px;
+  width: 6rem;
+  height: 3rem;
+  background-color: #f8f2bf;
+}
+.catColorInput:hover {
+  background-color: #e8e5c3;
+  cursor: pointer;
+}
+
+.newCatBtn {
+  margin-top: 0.5rem;
+  margin: 1rem;
+  font-family: "Peralta", serif;
+  font-weight: 600;
+  background-color: #f8f2bf;
+  color: #002349;
+  border: #8b6508 solid 2px;
+  border-radius: 20px;
+  width: 8rem;
+  height: 3rem;
+}
+.newCatBtn:hover {
+  background-color: #e8e5c3;
+  cursor: pointer;
+}
+.catTable {
+  margin-top: 0.5rem;
+  text-align: start;
+  width: 100%;
+}
+.catTableHead {
+  color: #002349;
+  text-align: center;
+}
+.catTableTitle {
+  color: #002349;
+  border: #8b6508 2px solid;
+}
+.catTableRow {
+  color: #002349;
 }

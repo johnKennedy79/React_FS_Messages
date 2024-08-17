@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import thumb from "../assets/img/thumb_up_16_pink.png";
 export default function SearchByCategory() {
   const [category, setCategory] = useState([]);
   const [messagesByCat, setMessagesByCat] = useState([]);
@@ -38,9 +39,11 @@ export default function SearchByCategory() {
     }
   }
   return (
-    <>
-      <Link to={"/"}>Log Out</Link>
-      <Link to={"/messageBoard/:username"}>MessageBoard</Link>
+    <div className="search">
+      <nav className="searchNav">
+        <Link to={"/"}>Log Out</Link>
+        <Link to={"/messageBoard/:username"}>MessageBoard</Link>
+      </nav>
       <form onSubmit={getCategory} className="MessageByCatForm">
         <select
           className="postCats"
@@ -49,49 +52,55 @@ export default function SearchByCategory() {
           onChange={handleChange}
           value={form.category}
         >
-          <option value="">Select a category</option>
+          <option value="" className="catSelect">
+            Select a category
+          </option>
           {category.map((category) => (
-            <option key={category.id} value={category.id}>
+            <option
+              key={category.id}
+              value={category.id}
+              className="catSearchSelect"
+            >
               {category.name}
             </option>
           ))}
         </select>
-        <button>Search</button>
+        <button className="searchBtn">Search</button>
       </form>
-
-      {messagesByCat.map(function (messagesByCat) {
-        const jsonDate = new Date(messagesByCat.timestamp);
-        const formattedDate = jsonDate.toLocaleDateString();
-        const formattedTime = jsonDate.toLocaleTimeString();
-        return (
-          <div className="messageBox" key={messagesByCat.id}>
-            <div
-              className="messageBoxHeader"
-              style={{ backgroundColor: messagesByCat.colour }}
-            >
-              <p className="user"> {messagesByCat.user} </p>
-              <h4 className="category"> Category: {messagesByCat.category} </h4>
+      <div className="searchMBDiv">
+        {messagesByCat.map(function (messagesByCat) {
+          const jsonDate = new Date(messagesByCat.timestamp);
+          const formattedDate = jsonDate.toLocaleDateString();
+          const formattedTime = jsonDate.toLocaleTimeString();
+          return (
+            <div className="messageBox" key={messagesByCat.id}>
+              <div
+                className="messageBoxHeader"
+                style={{ backgroundColor: messagesByCat.colour }}
+              >
+                <p className="user"> {messagesByCat.user} </p>
+                <h4 className="category">Category: {messagesByCat.category}</h4>
+              </div>
+              <div className="messageTextBox">
+                <p className="message"> {messagesByCat.message} </p>
+              </div>
+              <div
+                className="messageBoxFooter"
+                style={{ backgroundColor: messagesByCat.colour }}
+              >
+                <div className="thumbContainer">
+                  <img className="thumb" src={thumb} alt="pink thums up" />
+                  <p className="likes"> {messagesByCat.likes} </p>
+                </div>
+                <p className="timeStamp">
+                  {" "}
+                  Posted: {formattedDate} at {formattedTime}{" "}
+                </p>
+              </div>
             </div>
-            <div
-              className="messageTextBox"
-              style={{ backgroundColor: messagesByCat.colour }}
-            >
-              <p className="message"> {messagesByCat.message} </p>
-            </div>
-            <div
-              className="messageBoxFooter"
-              style={{ backgroundColor: messagesByCat.colour }}
-            >
-              <p className="likes"> likes: {messagesByCat.likes} </p>
-
-              <p className="timeStamp">
-                {" "}
-                Posted: {formattedDate} at {formattedTime}{" "}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </>
+          );
+        })}
+      </div>
+    </div>
   );
 }
