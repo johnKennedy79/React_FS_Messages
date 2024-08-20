@@ -5,6 +5,8 @@ import thumb from "../assets/img/thumb_up_16_pink.png";
 export default function MessageBoard() {
   const { username } = useParams();
   const [messages, setMessages] = useState([]);
+  const URL = "https://react-fs-messages.onrender.com/messages";
+  // const URL = "http://localhost:8080/messages";
 
   useEffect(() => {
     getMessages();
@@ -12,9 +14,7 @@ export default function MessageBoard() {
 
   async function getMessages() {
     try {
-      const response = await fetch(
-        "https://react-fs-messages.onrender.com/messages"
-      );
+      const response = await fetch(`${URL}`);
       const data = await response.json();
       setMessages(data);
     } catch (error) {
@@ -23,14 +23,9 @@ export default function MessageBoard() {
   }
   //send likes
   async function sendLike(messageId) {
-    const reslike = await fetch(
-      `https://react-fs-messages.onrender.com/messages/${messageId}/like`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(),
-      }
-    );
+    const reslike = await fetch(`${URL}/${messageId}/like`, {
+      method: "POST",
+    });
     if (reslike.ok) {
       location.reload();
     } else {
@@ -39,14 +34,9 @@ export default function MessageBoard() {
   }
   // delete message
   async function deleteMessage(messageId) {
-    const resdelete = await fetch(
-      `https://react-fs-messages.onrender.com/messages/${messageId}`,
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(),
-      }
-    );
+    const resdelete = await fetch(`${URL}/${messageId}`, {
+      method: "DELETE",
+    });
     if (resdelete.ok) {
       location.reload();
     } else {
